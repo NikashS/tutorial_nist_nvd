@@ -1,0 +1,964 @@
+<!DOCTYPE xhtml>
+<html lang="en">
+<head>
+    <title>Cyber Vulnerabilities</title>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-72688808-7', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script><!-- MathJAX -->
+    <script src="js/parallax.js"></script><!-- Parallax Banner -->
+    <script src="js/navbar.hide.js"></script><!-- Hide Navbar -->
+    <script src="js/scroll.js"></script><!-- Affix Sidebar/Scroll Functions -->
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Coda:400,800' rel='stylesheet' type='text/css'><!-- Google Font for Title -->
+    <link rel="stylesheet" type="text/css" href="css/cdup_tutorial.css"><!-- Custom Theme for know.data tutorial -->
+
+    <!-- Syntax Highlighting -->
+    <!-- Support for the following languages: -->
+    <!-- Apache, Bash, C#, C++, CSS, CoffeeScript, Device Tree, Diff, HTML, XML, HTTP, Ini, JSON, Java, JavaScript, Makefile, Markdown, Nginx, Objective-C, PHP, Perl, Python, Ruby, SQL, Fortran, Julia, Lisp, Lua, Mathematica, Matlab, Python-Profile, R, Scilab, Scala, Stata, Swift -->
+    <link rel="stylesheet" type="text/css" href="css/styles/github.css"><!-- Style for highlighting Code: Default to Github -->
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><!-- Activate Code Highlighting -->
+
+</head>
+<body>
+    <nav id='navbar' class="nav navbar-default navbar-fixed-top navbar-border"><!-- Navbar -->
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-links" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navbar-color" href="https://commerce.gov/datausability"><strong>Data Usability</strong></a>
+            </div> <!-- navbar-header -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="collapse-links">
+                <ul class="nav navbar-nav navbar-color">
+                    <li class="disclaimer"><a href="https://commerce.gov/datausability">a project by Commerce Data Service</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-color">
+                    <li><a href="https://www.commerce.gov/datausability/">Index</a></li>
+                    <li><a href="https://nvd.nist.gov/">NVD Research</a></li>
+                </ul>
+            </div><!-- navbar-collapse -->
+        </div><!-- container-fluid -->
+    </nav>
+
+    <!-- Banner -->
+    <section class="scroll">
+        <div class="scroll-overlay ">
+            <div class="title headtext">
+                <h1><span class="title-line" style="font-size:150%;">IS THERE ENOUGH FIRE IN YOUR FIREWALL?</span></h1>
+                <h4><span class="title-line">USE PYTHON, GEPHI, D3.JS, AND DIMPLE.JS TO EXPLORE CYBER VULNERABILITIES</span></h4>
+                <h5><span class="title-line">NATIONAL VULNERABILITIES DATABASE @ THE NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY</span></h5>
+                <h5><span class="title-line">VISUALIZATIONS FROM THE COMMERCE DATA SERVICE: STAR YING, JEFF CHEN, AND TYRONE GRANDISON</span></h5>
+            </div>
+        </div>
+    </section>
+
+    <!-- Body -->
+    
+    <section>
+        <div class="container-fluid content">
+            <div class="row">
+                
+                    
+                <div id='' class="hidden-xs hidden-sm col-lg-4 col-md-4">
+                    <a href="https://commerce.gov/dataservice"><img class="footlogo" width="160px"src="img/CDS-horizontal-v2.jpg"/></a>
+                    <a href="https://nvd.nist.gov/"><img class="footlogo" width="160px"src="img/logo.png"/></a> 
+                </div>
+
+                <div id='content' class="col-lg-6 col-md-6">
+                    <em>As part of the <a href="https://www.commerce.gov/datausability/">Commerce Data Usability Project</a>, NIST in collaboration with the <a href="https://www.commerce.gov/dataservice/">Commerce Data Service</a> has created a tutorial that uses National Vulnerabilities Data to explore cyber vulnerabilities. If you have question, feel free to reach out to the Commerce Data Service at <a href="mailto:DataUsability@doc.gov">DataUsability@doc.gov</a>.</em>
+                </div>
+            </div>
+            <hr>
+            
+            <br>
+            
+            <div class="row">
+                <div id='content' class="col-lg-10 col-md-10"><!-- Content -->
+
+                <section id='intro'>
+                    <h2 class="sectionhead">How often should we update our software to stay secure?</h2>
+                    <p>That's the question Americans ask themselves daily. What is a good tradeoff between convenience and security when everything we use seems to require constant updates? How often are the vulnerabilities being discovered, exploited, or patched in the software that powers our lives? How much are we putting ourselves at risk when we ignore our updates?</p>  
+                     <p>As it turns out, the National Institute of Standards and Technology (<a href="www.nist.gov">NIST</a>) maintains the National Vulnerabilities Database (<a href="https://nvd.nist.gov/home.cfm">NVD</a>), which contains reported vulnerabilities according to their Common Vulnerabilities and Exposures (CVE) Identifier. With coverage back to 2002, the NVD is sponsored by Department of Homeland Security’s National Cyber Security Division. Analysis conducted on listed vulnerabilities reveals insights into frequency at which vulnerabilities are reported and the risk to our everyday lives.</p>  
+                
+                    <h2 class="subsection">Seing is believing</h2>
+                    <p>Over time, reported vulnerabilities appear to fluctuate at random. For example, the the graph below of 2015 activity plots the number of reported vulnerabilities per day as well as the 'weighted threat' (the sum of the Common Vulnerability Scoring System score). The Common Vulnerability Scoring System (<a href="https://www.first.org/cvss">CVSS</a>) is "an open framework for communicating the characteristics and severity of software vulnerabilities" published by the CVSS Special Interest Group, acting on behalf of FIRST.org. We can use the CVSS score as a measure of the threat posed by any one vulnerability. NIST also maintains a calculator for CVSS v2 at <a href='https://nvd.nist.gov/cvss.cfm'></a> and will begin scoring with CVSS v3 in the fall of 2015. Every vulnerability on the NVD is scored according to the CVSS. We call the sum of the CVSS score for any given day the 'weighted threat' for that given day. Looking at the timeline below, we can see severe differences from day to day. For example on July 16, 2015, there were 159 vulnerabilities reported with a combined weighted threat of roughly 941. Other days barely see 2 vulnerabilities reported with weighted threats mostly under 50. Quite a large margin day to day.
+                    </p>
+
+                    <!-- Timeline Here -->
+                    <div id="chartContainer" class="container-fluid main-container">
+                        <script src="http://d3js.org/d3.v3.min.js"></script>
+                        <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+                        <script type="text/javascript">
+                            var w = $("#chartContainer").width(),
+                                h = window.innerHeight/1.7;
+                            var svg_chart = dimple.newSvg("#chartContainer", w, h);
+
+                            d3.json('./nvd_timeline.json', function(error, data){
+                                if (error) return console.warn(error);
+
+                                // Create the chart as usual
+                                // Needed to be empty chart initially
+                                var myChart = new dimple.chart(svg_chart);
+                                myChart.setMargins("5%", "10%", "5%", "10%");
+
+                                data[0].forEach(function (d) {
+                                    d["Day"] = d["Date"].substring(0, d["Date"].length - 9);
+                                    d["Time of Day"] =
+                                      "2000-01-01 " + d["Date"].substring(d["Date"].length - 8, d["Date"].length - 3);
+                                }, this);
+                                data[1].forEach(function (d) {
+                                    d["Day"] = d["Date"].substring(0, d["Date"].length - 9);
+                                    d["Time of Day"] =
+                                      "2000-01-01 " + d["Date"].substring(d["Date"].length - 8, d["Date"].length - 3);
+                                }, this);
+
+                                // Add the x axis reading dates in the format 01 Jan 2012
+                                // and displaying them 01 Jan
+                                var x = myChart.addTimeAxis("x", "Day", "%Y%m%d", "%d %b");
+                                x.title = 'Day';
+
+                                // Add the y axis reading dates and times but only outputting
+                                // times.  
+                                // var y = myChart.addTimeAxis("y", "Value",
+                                //     "%Y-%m-%d %H:%M", "%H:%M");
+                                var y = myChart.addMeasureAxis("y", "Value");
+                                y.title = 'Value';
+
+                                // Setting min and max dates requires them to be set
+                                // as actual javascript date objects
+                                // x.overrideMin = new Date("2015-01-01");
+                                // x.overrideMax = new Date("2015-09-01");
+                                y.tickFormat = '1g';
+
+                                x.timePeriod = d3.time.weeks;
+                                x.timeInterval = 8;
+
+                                var seriesDict = {};
+
+                                // Add the bubble series for shift values first so that it is
+                                // drawn behind the lines
+                                var s1 = myChart.addSeries("Weighted Threat", dimple.plot.line, [x, y]);
+                                    s1.data = data[0];
+                                    s1.lineMarkers = true;
+                                    s1.lineWeight = 1;
+                                    myChart.assignColor("Weighted Threat",'#990000');
+                                    seriesDict['Weighted Threat'] = { data: data[0], series: s1, visible: true };
+
+                                var s2 = myChart.addSeries("Count of Vulnerabilities", dimple.plot.line, [x, y]);
+                                    s2.data = data[1];
+                                    s2.lineMarkers = true;
+                                    s2.lineWeight = 1;
+                                    myChart.assignColor("Count of Vulnerabilities",'#ffd633');
+                                    seriesDict['Count of Vulnerabilities'] = { data: data[1], series: s2, visible: true };
+
+                                // Show a legend
+                                myLegend = myChart.addLegend(0, 10, 360, 20, "top");
+
+                                // Draw everything
+                                myChart.draw(2000);
+                                myChart.legends = [];
+                                svg_chart.selectAll("title_text")
+                                    .data(["Click to toggle:"])
+                                    .enter()
+                                    .append("text")
+                                    .attr("x", 0)
+                                    .attr("y", function (d, i) { return 18; })
+                                    .style("font-family", "helvetica")
+                                    .style("font-size", "12px")
+                                    .style("color", "Black")
+                                    .text(function (d) { return d; });
+
+                                myLegend.shapes.selectAll("rect")
+                                
+                                // Add a click event to each rectangle
+                                .on("click", function (e) {
+                                var meta = seriesDict[e.aggField[0]];
+                                if (seriesDict[e.aggField[0]].visible) {
+                                    meta.series.data = [];
+                                    d3.select(this).style("opacity", 0.2);
+                                    seriesDict[e.aggField[0]].visible = false;
+                                } else {
+                                    meta.series.data = meta.data;         
+                                    d3.select(this).style("opacity", 1);     
+                                    seriesDict[e.aggField[0]].visible = true;
+                                }
+                                myChart.draw(500);
+                                });
+                            });
+                        </script>
+                    </div>
+
+                    <h2 class="subsection">Is there a seasonal effect to the reporting of vulnerabilities?</h2>
+                    <p>Often times, patterns only emerge when aggregating data. Given such large differences day to day, what about changes from week to week? How much can the number of vulnerabilities reported vary from week to week? We now compare 2015 against the last four years on a weekly basis. Looking below, the difference in reported vulnerabilities still varies greatly but the we do see consistent peak weeks across several years. It seems that certain weeks on a quarterly basis peak or dip consistently across years.
+                    </p>
+                    <p>It would seem on an initial look there is a slight seasonal effect every quarter. This would suggest that at the bare minimum, we should update our software every quarter before the next spike in reported vulnerabilities comes in. </p>
+
+
+                    <div id="timeline_five" class="container-fluid main-container" style="background-color:white;color:darkred">
+                        <script src="//cdnjs.cloudflare.com/ajax/libs/dygraph/1.1.1/dygraph-combined.js"></script>
+                        <script type="text/javascript">
+                        g = new Dygraph(document.getElementById("timeline_five"), "./nvd_timeline_five.csv", {
+                            legend: 'always',
+                            // title: 'Vulnerabilities per Week',
+                            // showRoller: true,
+                            // rollPeriod: 1,
+                            labelsDivWidth: 80,
+                            labelsSeparateLines: true,
+                            axisLabelColor: 'black',
+                            ylabel: 'Count',
+                            xlabel: 'Week Number',
+                            // labels: ['X', 'Week Number','2015','2014','2013','2012','2011'],
+                            width: $("#timeline_five").width(),
+                            height: window.innerHeight/1.5,
+                            rightGap: 25,
+                            showRangeSelector: true,
+                            colors: ['#661400','#b32400','#ff3300','#ff704d','#ffad99'],
+                            rangeSelectorPlotFillColor: 'grey'
+                        });
+                        </script>
+                    </div>
+
+                    <h2 class="subsection">What platforms are being reported on?</h2>
+                    <p>Given the sometimes large threat from reported vulnerabilities in a day, what platforms are being targeted? Since most days have zero reported vulnerabilites, we look at a weekly snapshot and plot a network graph of affected platforms. Sizing each vulnerability by their CVSS score, we can see what are the biggest targets from our timeline above.
+                    </p>
+                    <p>Looking at the network graph, we can see that vulnerabilities are often very platform specific and on any given week we can see numerous platforms with new reported vulnerabilites. For example, looking at the spike in Week 4 (week of January 19th) below we can see Oracle had very bad Wednesday. The lion's share of reported vulnerabilities that week were targeted towards Oracle. Likewise, the spike in week 16 (week of April 13th) above corresponds to a bad Tuesday for Mirosoft and Linux and a bad Thursday for Oracle. They received the bulk of vulnerabilities reported that week.
+                    </p>
+
+                    <div id="network_plot" class="container-fluid main-container" >
+                      <form>
+                      <h4 style="font-family:helvetica"> Choose a week: <input 
+                          type="week", 
+                          name="choose_week", 
+                          min="2015-W01", 
+                          max="2015-W40", 
+                          value="2015-W02", 
+                          placeholder="Choose a week", 
+                          onchange="weekly(parseInt(this.value.substring(6,8)))"
+                      ></h4>
+                      </form>
+                      <script>
+                          var graph;
+
+                          function myGraph() {
+
+                              // Add and remove elements on the graph object
+                              this.addNode = function (obj) {
+                                  var radius = 300,
+                                      noise = (Math.random() - .5) * radius/10,
+
+                                      circle_x = (Math.round(Math.random())*2 - 1) * radius * Math.random() + w/2 + noise,
+                                      circle_y = Math.pow(Math.pow(radius,2) - Math.pow(circle_x - w/2, 2), .5) * (Math.round(Math.random())*2 - 1) + h/2 + noise,
+
+                                      center_x = (Math.random - 0.5) * w + noise * 5 * w/1500,
+                                      center_y = h/2 + noise*10,
+
+                                      final_x = (obj.type == 0) ? center_x : circle_x,
+                                      final_y = (obj.type == 0) ? center_y : circle_y;
+
+                                  nodes.push({"id": obj.name, 
+                                              "group": obj.group, 
+                                              "threat": obj.threat, 
+                                              'type': d3.svg.symbolTypes[obj.type*3],
+                                              'x': final_x,
+                                              'y': final_y,
+                                              'fixed': ((obj.type == 0) ? true : false)
+                                          });
+                                  update();
+                              };
+
+                              this.removeNode = function (id) {
+                                  var i = 0;
+                                  var n = findNode(id);
+                                  while (i < links.length) {
+                                      if ((links[i]['source'] == n) || (links[i]['target'] == n)) {
+                                          links.splice(i, 1);
+                                      }
+                                      else i++;
+                                  }
+                                  nodes.splice(findNodeIndex(id), 1);
+                                  update();
+                              };
+
+                              this.removeLink = function (source, target) {
+                                  for (var i = 0; i < links.length; i++) {
+                                      if (links[i].source.id == source && links[i].target.id == target) {
+                                          links.splice(i, 1);
+                                          break;
+                                      }
+                                  }
+                                  update();
+                              };
+
+                              this.removeallLinks = function () {
+                                  links.splice(0, links.length);
+                                  update();
+                              };
+
+                              this.removeAllNodes = function () {
+                                  nodes.splice(0, links.length);
+                                  update();
+                              };
+
+                              this.addLink = function (obj) {
+                                  links.push({"source": findNode(obj.source), "target": findNode(obj.target), "value": obj.threat});
+                                  update();
+                              };
+
+                              this.freeNode = function (obj) {
+                                  // console.log(findNode(obj.name));
+                                  findNode(obj.name).fixed = false;
+                                  update();
+                              };
+
+                              var findNode = function (id) {
+                                  for (var i in nodes) {
+                                      if (nodes[i]["id"] === id) return nodes[i];
+                                  }
+                                  ;
+                              };
+
+                              var findNodeIndex = function (id) {
+                                  for (var i = 0; i < nodes.length; i++) {
+                                      if (nodes[i].id == id) {
+                                          return i;
+                                      }
+                                  }
+                                  ;
+                              };
+
+                              // set up the D3 visualisation in the specified element
+                              var w = $("#network_plot").width(),
+                                  h = window.innerHeight/1.2,
+                                  r = 6;
+
+                              var color = d3.scale.category20b();
+
+                              var vis = d3.select("#network_plot")
+                                      .append("svg:svg")
+                                      .attr("style", "outline: thin solid lightgrey;")
+                                      .attr("width", w)
+                                      .attr("height", h)
+                                      .attr("id", "svg_net")
+                                      .attr("pointer-events", "all")
+                                      .attr("viewBox", "0 0 " + w + " " + h)
+                                      .attr("perserveAspectRatio", "xMinYMid")
+                                      .append('svg:g');
+
+                              // vis.append("rect")
+                              //     .attr("width", "100%")
+                              //     .attr("height", "100%")
+                              //     .attr("fill", "#7f7f7f");
+
+                              var force = d3.layout.force();
+
+                              var nodes = force.nodes(),
+                                  links = force.links();
+
+                              var update = function () {
+                                  var link = vis.selectAll("line")
+                                          .data(links, function (d) {
+                                              return d.source.id + "-" + d.target.id;
+                                          });
+
+                                  link.enter().append("line")
+                                          .attr("id", function (d) {
+                                              return d.source.id + "-" + d.target.id;
+                                          })
+                                          .attr("stroke-width", function (d) {
+                                              return d.value / 100;
+                                          })
+                                          .attr("class", "link");
+                                  link.append("title")
+                                          .text(function (d) {
+                                              return d.value;
+                                          });
+                                  link.exit().remove();
+
+                                  var node = vis.selectAll("g.node")
+                                          .data(nodes, function (d) {
+                                              return d.id;
+                                          });
+
+                                  var nodeEnter = node.enter().append("g")
+                                          .attr("class", "node")
+                                          .call(force.drag);
+
+                                  nodeEnter.append("svg:path")
+                                          .attr("id", function (d) {
+                                              return "Node;" + d.id;
+                                          })
+                                          .attr("d", d3.svg.symbol()
+                                              .size(function(d) { return (Math.pow(d.threat,2) + 5) * 20 * w/1500; })
+                                              .type(function(d) { return d.type; }))
+                                          .attr("class", "nodeStrokeClass")
+                                          .attr("fill", function(d) { return color(d.group); });
+
+                                  nodeEnter.append("svg:text")
+                                          .attr("class", "textClass")
+                                          .attr("x", 14)
+                                          .attr("y", ".31em")
+                                          .text(function (d) {
+                                              return (d.type == 'circle') ? d.id : '';
+                                          });
+
+                                  node.exit().remove();
+
+                                  var padding = 5,
+                                      radius=15;
+
+                                  function collide(alpha) {
+                                    var quadtree = d3.geom.quadtree(nodes);
+                                    return function(d) {
+                                      var rb = 2*radius + padding,
+                                          nx1 = d.x - rb,
+                                          nx2 = d.x + rb,
+                                          ny1 = d.y - rb,
+                                          ny2 = d.y + rb;
+                                      
+                                      quadtree.visit(function(quad, x1, y1, x2, y2) {
+                                        if (quad.point && (quad.point !== d)) {
+                                          var x = d.x - quad.point.x,
+                                              y = d.y - quad.point.y,
+                                              l = Math.sqrt(x * x + y * y);
+                                            if (l < rb) {
+                                            l = (l - rb) / l * alpha;
+                                            d.x -= x *= l;
+                                            d.y -= y *= l;
+                                            quad.point.x += x;
+                                            quad.point.y += y;
+                                          }
+                                        }
+                                        return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+                                      });
+                                    };
+                                  }
+
+                                  var vulnNum = nodes.filter( function(d) { return d.type == 'square'; }).length,
+                                      platNum = nodes.filter( function(d) { return d.type == 'circle'; }).length
+
+                                  vis.selectAll(".title")
+                                      .remove();
+
+                                  var counter = vis.append("svg:text")
+                                                    .attr("class", "title")
+                                                    .attr("x", 10)
+                                                    .attr("y", 15)
+                                                    .attr("text-anchor", "left")
+                                                    .text(function(d) {
+                                                      return "Vulnerabilities: " + vulnNum + "  Platforms: " + platNum;
+                                                    });
+
+                                  var dayofWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+                                  // Erase last draw of legend
+                                  d3.selectAll(".legend")
+                                      .remove();
+
+                                  var legend = vis.selectAll(".legend")
+                                              // sort color domain to list legend in ascending order
+                                              .data(color.domain().sort())
+                                          .enter().append("g")
+                                              .attr("class", "legend")
+                                              .attr("transform", function(d, i) { return "translate(-10," + i * 20 + ")"; });
+
+                                  legend.append("rect")
+                                        .attr("x", w - 18)
+                                        .attr("y", 2)
+                                        .attr("width", 18)
+                                        .attr("height", 18)
+                                        .style("fill", color);
+
+                                  legend.append("text")
+                                        .attr("x", w - 24)
+                                        .attr("y", 11)
+                                        .attr("dy", ".35em")
+                                        .attr("class", "legendText")
+                                        .style("text-anchor", "end")
+                                        .text(function(d) { return dayofWeek[d-1]; });
+
+                                  force.on("tick", function () {
+
+                                      node.attr("transform", function (d) {
+                                          return "translate(" + Math.max(r, Math.min(w - r, d.x)) + "," + Math.max(r, Math.min(h - r, d.y)) + ")";
+                                      });
+
+                                      link.attr("x1", function (d) {
+                                          return d.source.x;
+                                      })
+                                              .attr("y1", function (d) {
+                                                  return d.source.y;
+                                              })
+                                              .attr("x2", function (d) {
+                                                  return d.target.x;
+                                              })
+                                              .attr("y2", function (d) {
+                                                  return d.target.y;
+                                              });
+                                              // node.each(collide(0.5));
+                                  });
+
+                                  // Restart the force layout.
+                                  force
+                                      .gravity(-.001)
+                                      .charge(-30)
+                                      .friction(0.5)
+                                      .linkDistance( function(d) { return d.value * 20 * w/1800 } )
+                                      .size([w, h])
+                                      .start();
+                              };
+
+
+                              // Make it all go
+                              update();
+
+                          }
+
+                          function drawGraph(weeknumber) {
+
+                              graph = new myGraph("#svgdiv");
+
+                              // Load JSON and iteratively draw that weeks graph
+                              d3.json('./nvd.json', function(error, json){
+                                  if (error) return console.warn(error);
+                                  nodes = json.nodes;
+                                  links = json.links;
+                                  var step = 1;
+                                  function nextval(){
+                                      step++;
+                                      return 20 + (15 + step);
+                                  };
+                                  weeklynodes = nodes.filter( function(d){ return d.week == weeknumber; });
+                                  weeklylinks = links.filter( function(d){ return d.week == weeknumber; });
+                                  for (var i = 0; i < weeklynodes.length; i++){
+                                      (function(ind){
+                                          setTimeout(function(){ graph.addNode(weeklynodes[ind]); keepNodesOnTop(); }, 75 * ind);
+                                      })(i);
+                                  };
+                                  for (var i = 0; i < weeklylinks.length; i++){
+                                      (function(ind){
+                                          setTimeout(function(){ graph.addLink(weeklylinks[ind]); keepNodesOnTop(); }, 50 * ind + 75 * weeklynodes.length);
+                                      })(i);
+                                  };
+                                  // for (var i = 0; i < weeklynodes.length; i++){
+                                  //     (function(ind){
+                                  //         setTimeout(function(){ graph.freeNode(weeklynodes[ind]); keepNodesOnTop(); }, 20 * ind + 50 * weeklylinks.length + 75 * weeklynodes.length);
+                                  //     })(i);
+                                  // };
+                              });
+
+                          }
+
+                          // Initialize on Week 2, first non-empty week
+                          var thisweek = 2;
+                          drawGraph(thisweek);
+
+                          // because of the way the network is created, nodes are created first, and links second,
+                          // so the lines were on top of the nodes, this just reorders the DOM to put the svg:g on top
+                          function keepNodesOnTop() {
+                              $(".nodeStrokeClass").each(function( index ) {
+                                  var gnode = this.parentNode;
+                                  gnode.parentNode.appendChild(gnode);
+                              });
+                          }
+
+                          function weekly(newweek){
+                              // $('#svg_net').stop(stopAll=true,goToEnd=true);
+                              d3.select("#svg_net")
+                                      .remove();
+                              // myGraph();
+                              drawGraph(newweek);
+                          }
+
+                      </script>
+                  </div> 
+
+                  <h2 class="subsection">But what platforms over the year are reported on and patched the most?</h2>
+                  <p>Our weekly snapshot reveals that for any given week of the year, five or more platforms could have vulnerabilities reported. But what are the most targeted platforms overall for 2015? To answer this, we look at the top ranking platforms in terms of vulnerabilities reported. Are the platforms being targeted ones people never use? Does conventional wisdom hold? Does Apple receive less reported vulnerabilities than Microsoft? Does Linux receive even less?</p>
+
+                  <!--BAR CHART-->
+                  <div id="nvd_plat" class="container-fluid main-container" style="background-color:white;">
+                      <script type="text/javascript">
+                          var w = $("#nvd_plat").width()
+                              h = window.innerHeight/1.7;
+                          
+                          var svg_plat = dimple.newSvg("#nvd_plat", w, h);
+                          d3.csv("./nvd_plat.csv", function (data) {
+                              bigcount = data.filter(function(d) { return d.Count > 10 })
+                              
+                              var myChart = new dimple.chart(svg_plat, bigcount);
+                              myChart.setMargins("10%", "10%", "1%", "10%");
+                              myChart.addMeasureAxis("x", "Count")
+                              myChart.defaultColors = [
+                                  new dimple.color("#ff4d4d"),
+                                  new dimple.color("#ff1a1a"),
+                                  new dimple.color("#cc0000"),
+                                  new dimple.color("#800000"),
+                                  new dimple.color("#cc0000"),
+                                  new dimple.color("#ff1a1a"),
+                              ];
+                              var y = myChart.addCategoryAxis("y", "Platform");
+                              myChart.addSeries('Platform', dimple.plot.bar);
+                              myChart.draw();
+                          });
+                      </script>
+                  </div>
+
+                  <p>Looking below, populous platforms obviously have more reported vulnerabilities. The difference in reported vulnerabilities between Apple and Microsoft is minimal over 2015. Vulnerabilities for both platforms are being reported and patched to roughly the same consistency. Linux receives much less compared to the other two major operating systems suggesting it has much less focus on it thant Apple or Microsoft. We can also look at the interaction between platforms which up to this point we have not been able to capture. Adobe, Canonical, and Novell are closely tied with major platforms such as Apple, Microsoft or Cisco. Vulnerabilites reported for former are often reported for the latter.</p>
+
+                  <!--GEPHI NETWORK PLOT-->
+                  <div id='svg_section' class="container-fluid" style="background-color:black;margin-left:auto;margin-right:auto;text-align:center">
+                      <object data="./img/network_2015.svg" type="image/svg+xml" width=70%>
+                          <img src="./img/network_2015.png" height="50%" width="100%" />
+                      </object>
+                  </div>
+
+                  <h2 class="subsection">Okay, so how often should I update?</h2>
+                  <p>So how often should we update? Our exploratory look at the NVD suggest that at the very least every quarter. We see that there is a slight seasonality to when reports come in. Of course our look did not extend into the associated threat of each vulnerability very much. More severe vulnerabilities would necessitate a higher update frequency. But how frequent? The answer is determined by each person's individual risk tolerance. Providing these tools will allow for each individual to more accurately assess their own course of action.</p>
+
+                </section>
+               
+
+                <section id='gettingstarted'>
+                    <h2 class="sectionhead">Getting Started</h2>
+                    <p>
+                      In addition to assessing cybersecurity risks, the NVD data can also be used to identify vulnerability patterns across platforms and seasonality. To give a head start, we will cover the following basic steps in analyzing NVD and creating data visualizations in Python:
+                      <ul>
+                          <li> Parsing NIST NVD 2015 XML. Extracting relevant into a manipulable format; </li>
+                          <li> Creating timeline for vulnerabilities;</li>
+                          <li> Creating network list for weekly view; and </li>
+                          <li> Creating edge and node list for annual view.</li>
+                      </ul>
+                    </p>
+
+                    <p>Follow along in the iPython Notebook below or check out the code files at the Github repo (<a href="https://github.com/CommerceDataService/tutorial_nist_nvd">https://github.com/CommerceDataService/tutorial_nist_nvd</a>).
+                      <br>
+                      <a href="./nist_nvd_notebook.ipynb">Jupyter Notebook Version</a>
+                    </p>
+                </section>
+
+                <section id="creatinginputs">
+
+                    <h2 class="sectionhead">Creating Inputs for Network Viz in D3.js + Gephi</h2>
+
+                    <h2 class="subsection">(Using NIST National Vulnerabilities Database)</h2>
+                    
+                    <h2 class="subsection">Importing the Necessary Packages into Python for processing</h2>
+                    
+                    <p>
+                    We first import the necessary packages to process the NIST National Vulnerabilities Database (NVD) for 2015. The xml file is available here: NIST NVD Website. The packages used are:</p>
+
+                    <ol>
+                        <li>re for parsing the xml with regex</li>
+                        <li>csv for exporting to comma separated variable file</li>
+                        <li>json for exporting to JSON</li>
+                        <li>datetime for determining week number of year and day number of week from timestamp</li>
+                        <li>(Optional) tqdm for creating a cheap progress bar on an iterable.</li>
+                    </ol>
+
+                    <pre><code>import re, csv, json, datetime
+from tqdm import *</code></pre>
+                    
+                    <h2 class="subsection">Defining a function to extract necessary information</h2>
+                    
+                    <p>We first define a function that can parse the NIST NVD xml file and extract the relevant information. We parse out more fields than is needed for our visualisations. The additional information can be used in the future to create more insights into the NIST NVD. The function returns a dictionary by vulnerability key as defined by https://cve.mitre.org/. All additional information is then stored in a dictionary for that particular vulnerability.</p>
+                    
+                    <pre><code>def pull_nvd(fname):
+    print 'Loading NVD Dataset: %s'%fname
+    nvd_dict = {}
+    with open(fname) as f:
+        for ln in tqdm(f):
+            if 'entry id=' in ln:
+                vuln_id = re.search('CVE.\d\d\d\d.\d\d\d\d', ln).group(0)
+                # print '************************%s************************'%vuln_id
+                nvd_dict[vuln_id] = {}
+            elif 'cpe-lang:fact-ref name=' in ln:
+                nvd_dict[vuln_id]['vuln_os'] = []
+                nvd_dict[vuln_id]['vuln_os_plat'] = []
+                vuln_os = re.search('\".*\"', ln).group(0)[8:-1]
+                vuln_os_plat = re.split('[:\"]', ln)
+                # print '--->%s'%vuln_os
+                nvd_dict[vuln_id]['vuln_os'].append(re.sub('_',' ',vuln_os_plat[4]))
+                nvd_dict[vuln_id]['vuln_os_plat'].append(re.sub('_',' ',vuln_os_plat[4])+' '+re.sub('_',' ',vuln_os_plat[5]))
+            elif '<vuln:published-datetime>' in ln:
+                vuln_date = re.search('\d\d\d\d.*<', ln).group(0)[:-1]
+                date = [int(vuln_date[0:4]),int(vuln_date[5:7]),int(vuln_date[8:10]), int(vuln_date[11:13]), int(vuln_date[14:16]), int(vuln_date[17:19])]
+                date_num = datetime.date(date[0],date[1],date[2]).isocalendar()
+                datetime_num = datetime.datetime(date[0],date[1],date[2],date[3],date[4],date[5]).strftime('%Y%m%d %X')
+                # print '    --->%s'%vuln_date
+                nvd_dict[vuln_id]['vuln_date'] = date_num
+                nvd_dict[vuln_id]['vuln_datetime'] = datetime_num
+            elif '<cvss:score>' in ln:
+                vuln_score = re.search('\d?\d.\d', ln).group(0)
+                # print '    --->%s'%vuln_score
+                nvd_dict[vuln_id]['vuln_score'] = vuln_score
+            elif '<cvss:access-vector>' in ln:
+                vuln_vector = re.search('>.*<', ln).group(0)[1:-1]
+                # print '    --->%s'%vuln_vector
+                nvd_dict[vuln_id]['vuln_vector'] = vuln_vector
+            elif '<cvss:access-complexity>' in ln:
+                vuln_compl = re.search('>.*<', ln).group(0)[1:-1]
+                # print '    --->%s'%vuln_compl
+                nvd_dict[vuln_id]['vuln_compl'] = vuln_compl
+            elif '<cvss:authentication>' in ln:
+                vuln_auth = re.search('>.*<', ln).group(0)[1:-1]
+                # print '    --->%s'%vuln_auth
+                nvd_dict[vuln_id]['vuln_auth'] = vuln_auth
+            elif '<cvss:confidentiality-impact>' in ln:
+                vuln_confid = re.search('>.*<', ln).group(0)[1:-1]
+                # print '    --->%s'%vuln_confid
+                nvd_dict[vuln_id]['vuln_confid'] = vuln_confid
+            elif '<cvss:integrity-impact>' in ln:
+                vuln_integ = re.search('>.*<', ln).group(0)[1:-1]
+                # print '    --->%s'%vuln_integ
+                nvd_dict[vuln_id]['vuln_integ'] = vuln_integ
+            elif '<cvss:availability-impact>' in ln:
+                vuln_avail = re.search('>.*<', ln).group(0)[1:-1]
+                # print '    --->%s'%vuln_avail
+                nvd_dict[vuln_id]['vuln_avail'] = vuln_avail
+            elif 'vuln:reference href=' in ln:
+                vuln_link = re.search('href=.*\"', ln).group(0)[6:-1]
+                # print '    --->%s'%vuln_link
+                nvd_dict[vuln_id]['vuln_link'] = vuln_link
+            elif '<vuln:summary>' in ln:
+                vuln_summ = re.search('>.*<', ln).group(0)[1:-1]
+                # print '    --->%s'%vuln_summ
+                nvd_dict[vuln_id]['vuln_summ'] = vuln_summ
+            elif '<vuln:source>' in ln:
+                vuln_source = re.search('>.*<', ln).group(0)[1:-1]
+                # print '    --->%s'%vuln_summ
+                nvd_dict[vuln_id]['vuln_source'] = vuln_source
+    return(nvd_dict)</code></pre>
+                    
+                <h2 class="subsection">Run the function we defined</h2>
+
+                <p>Now run the defined function on the NVD 2015 xml file extracted to the working directory.</p>
+                
+                <pre><code>nvd = pull_nvd('./nvdcve-2.0-2015.xml')</code></pre>
+
+                <h2 class="subsection">Create a timeline for 2015 so far</h2>
+                
+                <p>We create a timeline for 2015 so far by count for both the unweighted instances and the weighted totals given the CVSS score provided. Both the amount of vulnerabilities reported and the evaluated threat they pose on that day is of interest. We compute a running sum for both to see how much of a difference there is day to day.</p>
+                
+                <pre><code>nvd_timeline = [[],[]]
+for cve in tqdm(nvd.keys()):
+    if 'vuln_score' in nvd[cve].keys():
+        weightedme = {'Method':'Weighted', 'Date':nvd[cve]['vuln_datetime'], 'Value':float(nvd[cve]['vuln_score'])}
+        countme = {'Method':'Count', 'Date':nvd[cve]['vuln_datetime'], 'Value':1}
+        if nvd[cve]['vuln_datetime'] not in [ x['Date'] for x in nvd_timeline[0] ]:
+            nvd_timeline[0].append(weightedme)
+            nvd_timeline[1].append(countme)
+        else:
+            for i, day in enumerate(nvd_timeline[0]):
+                if nvd[cve]['vuln_datetime'] in day['Date'] and day['Method'] == 'Weighted':
+                    nvd_timeline[0][i]['Value'] += float(nvd[cve]['vuln_score'])
+                elif nvd[cve]['vuln_datetime'] in day['Date'] and day['Method'] == 'Count':
+                    nvd_timeline[1][i]['Value'] += 1</code></pre>
+                
+                <p>Export our newly structured data to the local working directory as a JSON. This is now an input for our d3.js + dimple.js scatter plot.</p>
+                
+                <pre><code>with open('./nvd_timeline.json', 'wb') as f:
+    json.dump(nvd_timeline, f)</code></pre>
+                
+                <h2 class="subsection">Create a count of vulnerabilities per platform</h2>
+                
+                <p>Now we are interested in the number of vulnerabilities reported by platform. Does conventional wisdom hold up? Does Apple receive less reported vulnerabilities than Microsoft? Does Linux receive even less? To answer this, we create a new entry for each new platform and do a running sum as we parse through our defined dictionary. We then sort the resulting list and add a header to make loading in javascript faster.</p>
+                
+                <pre><code>nvd_plat = []
+for cve in tqdm(nvd.keys()):
+    if 'vuln_score' in nvd[cve].keys():
+        for os in nvd[cve]['vuln_os']:
+            appendme = [os, 1]
+            if os not in [ x[0] for x in nvd_plat ]:
+                nvd_plat.append(appendme)
+            else:
+                for i, plat in enumerate(nvd_plat):
+                    if os == plat[0]:
+                        nvd_plat[i][1] += 1
+
+nvd_plat_sort = [['plat','count']]
+nvd_plat_sort.extend(sorted(nvd_plat))</code></pre>
+                
+                <p>Export our (again) newly structured data this time to a CSV in the local working directory. We show how different file types can be exported from Python. We can then use our exported file as an input for d3.js + dimple.js histogram.</p>
+                
+                <pre><code>with open('./nvd_plat.csv', 'wb') as csvfile:
+    writeme = csv.writer(csvfile, delimiter=',')
+    writeme.writerows(nvd_plat_sort)</code></pre>
+                
+                <h2 class="subsection">Create network graph with weekly information</h2>
+                
+                <p>Now we want to look at what platforms are being attacked for each week. We do this by creating a dictionary of nodes and edges with the additional week number, day number, and threat score loaded. Then given the dictionary, export to JSON file.</p>
+                
+                <pre><code>nvd_json = {'nodes':[],'links':[]}
+for cve in nvd.keys():
+    if 'vuln_os' in nvd[cve].keys():
+        append_vuln = {'name':cve, 'group':nvd[cve]['vuln_date'][2], 'week':nvd[cve]['vuln_date'][1], 'threat':float(nvd[cve]['vuln_score']), 'type':1}
+        nvd_json['nodes'].append(append_vuln)
+        for os in nvd[cve]['vuln_os']:
+            append_plat = {'name':os, 'group':nvd[cve]['vuln_date'][2], 'week':nvd[cve]['vuln_date'][1], 'threat':0, 'type':0}
+            if append_plat not in nvd_json['nodes']:
+                nvd_json['nodes'].append(append_plat)
+            nvd_json['links'].append({'source':cve, 'target':os, 'group':nvd[cve]['vuln_date'][2], 'week':nvd[cve]['vuln_date'][1], 'threat':float(nvd[cve]['vuln_score'])})</code></pre>
+                
+                <p>We now export to JSON for our d3.js network graph.</p>
+                
+                <pre><code>with open('./nvd.json', 'wb') as f:
+    json.dump(nvd_json, f)</code></pre>
+                
+                <h2 class="subsection">Build inputs for Gephi (Big Annual Network Graph)</h2>
+                
+                <p>Weekly slices are important but we also want to see the whole network of vulnerabilities and platforms for 2015 at once. The number of nodes (platforms and vulnerabilities) and edges are too big for an interactive d3.js visualization. We instead use <a href="http://gephi.github.io/">Gephi</a>. Gephi requires an edge list and (optionally) a node list (if unconnected nodes exist). We create both in this exercise as list arrays with headers filled in. Then populate each row with either the edge or node. Finally, writing both files to csv files in working directory.</p>
+                
+                <pre><code>nvd_edge = [['source','target','value']]
+for cve in nvd.keys():
+    if 'vuln_score' in nvd[cve].keys():
+        threat = nvd[cve]['vuln_score']
+    else:
+        threat = 0.0
+    if 'vuln_os' in nvd[cve].keys():
+        cve_type = (nvd[cve]['vuln_vector'], nvd[cve]['vuln_compl'], nvd[cve]['vuln_auth'], nvd[cve]['vuln_confid'], nvd[cve]['vuln_integ'])
+        for plat in nvd[cve]['vuln_os']:
+            appendme = [cve_type, plat, threat]
+            if appendme not in nvd_edge:
+                nvd_edge.append(appendme)
+
+                nvd_node = [['id','value','type']]
+for row in nvd_edge:
+    append_vuln = [row[0],row[2],0]
+    append_targ = [row[1],0.0,1]
+    if append_vuln not in nvd_node:
+        nvd_node.append(append_vuln)
+    if append_targ not in nvd_node:
+        nvd_node.append(append_targ)</code></pre>
+                
+                <p>We now export them to CSV for Gephi.</p>
+                
+                <pre><code>with open('./nvd_edge.csv', 'wb') as csvfile:
+    writeme = csv.writer(csvfile, delimiter=',')
+    writeme.writerows(nvd_edge)
+
+with open('./nvd_node.csv', 'wb') as csvfile:
+    writeme = csv.writer(csvfile, delimiter=',')
+    writeme.writerows(nvd_node)</code></pre>
+                
+                <h2 class="subsection">Looking at other years of the NVD</h2>
+                
+                <p>Given our look at NVD in 2015, we want to expand our look to past years. We do this by expanding our original dictionary to go beyond 2015. We load previous years of the NVD with the same function and update the original dictionary we defined. Then count for each week how many vulnerabilities are reported for each year.</p>
+                
+                <pre><code>nvd.update(pull_nvd('./nvdcve-2.0-2011.xml'))
+nvd.update(pull_nvd('./nvdcve-2.0-2012.xml'))
+nvd.update(pull_nvd('./nvdcve-2.0-2013.xml'))
+nvd.update(pull_nvd('./nvdcve-2.0-2014.xml'))</code></pre>
+                
+                <p>Now with our newly beefed up dictionary that includes 2011 to 2015 datasets from NVD, we start processing to create time series for all five years. To do this we look at iso week number for any given year and conducting a running sum of the number of vulnerabilities reported. Commented out is an alternative look at the combined CVSS score for that week.</p>
+                
+                <pre><code>nvd_timeline_five = []
+for cve in tqdm(nvd.keys()):
+    if 'vuln_score' in nvd[cve].keys():
+        appendme = [nvd[cve]['vuln_date'][1],0,0,0,0,0]
+        if nvd[cve]['vuln_date'][0] == 2015:
+            colnum = 1
+        elif nvd[cve]['vuln_date'][0] == 2014:
+            colnum = 2
+        elif nvd[cve]['vuln_date'][0] == 2013:
+            colnum = 3
+        elif nvd[cve]['vuln_date'][0] == 2012:
+            colnum = 4
+        elif nvd[cve]['vuln_date'][0] == 2011:
+            colnum = 5
+        if nvd[cve]['vuln_date'][1] not in [ x[0] for x in nvd_timeline_five ]:
+            # appendme[colnum] += float(nvd[cve]['vuln_score'])
+            appendme[colnum] += 1
+            nvd_timeline_five.append(appendme)
+        else:        
+            for i, day in enumerate(nvd_timeline_five):
+                if nvd[cve]['vuln_date'][1] == day[0]:
+                    # nvd_timeline_five[i][colnum] += float(nvd[cve]['vuln_score'])
+                    nvd_timeline_five[i][colnum] += 1</code></pre>
+                
+                <p>Like before we want to sort the resulting structured data and attach a header to it. This reduces processing on the javascript end.</p>
+                
+                <pre><code>nvd_timeline_five_sort = [['week','2015','2014','2013','2012','2011']]
+nvd_timeline_five_sort.extend(sorted(nvd_timeline_five))</code></pre>
+                
+                <p>Now we can export it to a CSV for our dygraph.js plot.</p>
+                
+                <pre><code>with open('./nvd_timeline_five.csv', 'wb') as csvfile:
+    writeme = csv.writer(csvfile, delimiter=',')
+    writeme.writerows(nvd_timeline_five_sort)</code></pre>
+                
+
+
+
+
+
+
+
+                </section>
+
+                </div><!-- Content -->
+                  
+                <div id='sidebar' class="hidden-xs hidden-sm col-lg-2 col-md-2"><!-- Sidebar -->
+                       
+                    <ul id='featured-nav' class="nav nav-list featured-nav nav-stacked">
+                      
+                        
+                        <li>
+                            <ul class="fa-style"><!-- Font Awesome -->
+                               <!-- <li><a href="https://github.com/CommerceDataService/tutorial_ms_powerbi"><i class="fa fa-file-archive-o fa-lg"></i></a></li>
+                                <li><a href="https://github.com/CommerceDataService/tutorial_ms_powerbi"><i class="fa fa-file-code-o fa-lg"></i></a></li>
+                                <li><a href="https://github.com/CommerceDataService/tutorial_ms_powerbi"><i class="fa fa-github-square fa-lg"></i></a></li>-->
+                            </ul>
+                        </li>
+                        <li>
+                            
+                        </li>
+                        <li>
+                            <ul class="fa-style"><!-- Font Awesome -->
+                                <!--<li><a href="https://github.com/CommerceDataService/tutorial_ms_powerbi"><i class="fa fa-file-archive-o fa-lg"></i></a></li>
+                                <li><a href="https://github.com/CommerceDataService/tutorial_ms_powerbi"><i class="fa fa-file-code-o fa-lg"></i></a></li>
+                                <li><a href="https://github.com/CommerceDataService/tutorial_ms_powerbi" title="Github Repo for MS Power BI Part 1"><i class="fa fa-github-square fa-lg"></i></a></li>-->
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="fa-style"><!-- Font Awesome -->
+                                <li><a href="https://github.com/CommerceDataService/tutorial_nist_nvd" title="Github Repo"><i class="fa fa-github-square fa-lg"></i></a></li>
+                                <li><a href="https://twitter.com/usnistgov" title="Twitter handle for NIST"><i class="fa fa-twitter-square fa-lg"></i></a></li><!-- Haven't added the SNS components -->
+                                <!--<li><a href=""><i class="fa fa-linkedin-square fa-lg"></i></a></li>
+                                <li><a href=""><i class="fa fa-facebook-square fa-lg"></i></a></li>-->
+                            </ul>
+                        </li>
+                        <li><a href="#intro">INTRODUCTION</a></li>
+                        <li><a href="#gettingstarted">GETTING STARTED</a></li>
+                        <li><a href="#creatinginputs">CREATING INPUTS</a></li>
+                        
+                    </ul>
+                </div><!-- Sidebar -->
+            </div><!-- Row -->
+        </div><!-- Container-fluid -->
+    </div>
+
+</body>
+</html>
